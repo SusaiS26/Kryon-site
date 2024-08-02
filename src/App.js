@@ -1,15 +1,25 @@
 import './App.css';
-import Homepage from './Homepage';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {useState} from "react";
+import SegmentModal from './SegmentModal';
 
 function App() {
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <div className="App">
-      <Router>
-        <Routes>
-          <Route excat path='/' element={<Homepage />}></Route>
-        </Routes>
-      </Router>
+       <div className='page-header'><h1> {`View Audience`}</h1></div>
+      <div className="text-center">
+        <button
+          type="button"
+          className="btn-segment"
+          onClick={() => {
+            setShowModal(!showModal);
+          }}
+        >
+          Save segment
+        </button>
+        <SegmentModal showModal={showModal} setShowModal={setShowModal} />
+        </div>
     </div>
   );
 }
